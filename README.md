@@ -1,4 +1,4 @@
-## Funcionarios APIS (EmploysControll)
+## Funcionarios APIS (EmploysControl)
 
 Está aplicação está disponibilizando uma API para a realização do CRUD de funcionarios
 
@@ -8,26 +8,24 @@ Está aplicação está disponibilizando uma API para a realização do CRUD de 
 - ASP.NET Core 6
 - Docker
 
-
-Ao Baixar a aplicação é necessário inicializar o projeto com o comando...
-
-```bash
-$ npm start
-```
-
-Sera necessário criar um container para o banco de dados "postgre", utilizado o seguinte comando.
+É necessário ter o serviço `postgres` rodando no host. Para levantar o serviço via docker é necessário executar o seguinte comando:
 
 ```bash
 $ docker-compose up -d
 ```
 
-Será necessario criar o banco de dados após a criação do container. 
+Após termos o banco rodando, é necessário executar as migrations do Entity Framework, para isso executar o seguinte comando:
+```bash
+$ dotnet ef database update
+```
 
+O ultimo passo é colocar a nossa aplicação para rodar através do seguinte comando:
 
-Ao rodar a aplicação, sera gerado um Swagger com todas as as rodas e informações necessárias para poder utilizar a api em 
- 
- 
- http://localhost:7036/swagger/index.html
+```bash
+dotnet run employesControl-V2.csproj 
+```
+
+Ao rodar a aplicação, sera gerado um `Swagger` com todas as as rodas e informações necessárias para poder utilizar a api na segiunte url: http://localhost:7036/swagger/index.html
 
 
 

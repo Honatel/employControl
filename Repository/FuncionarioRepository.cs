@@ -20,7 +20,7 @@ namespace employesControl_V2.Repository
         public async Task<Funcionario> FindById(int id)
         {
             return await _context.Funcionarios.
-                Where(x => x.Id == id).FirstOrDefaultAsync();
+                Where(x => x.Id == id).AsNoTracking().FirstOrDefaultAsync();
         }
         public void Updade(Funcionario entity)
         {

@@ -53,15 +53,14 @@ namespace employesControl_V2.Services
             var funcionario = await _repositoryFunc.FindById(id);
             if (entity == null) return false;
 
-            entity.DDD = funcionario.DDD ?? entity.DDD;
-            entity.Email = funcionario.Email ?? entity.Email;
-            entity.Nome = funcionario.Nome ?? entity.Nome;
-            entity.Sobrenome = funcionario.Sobrenome ?? entity.Sobrenome;
-            entity.Telefones = funcionario.Telefones ?? entity.Telefones;
-            entity.LiderId = funcionario.LiderId ?? entity.LiderId;
+            funcionario.DDD = entity.DDD ?? entity.DDD;
+            funcionario.Email = entity.Email ?? funcionario.Email;
+            funcionario.Nome = entity.Nome ?? funcionario.Nome;
+            funcionario.Sobrenome = entity.Sobrenome ?? funcionario.Sobrenome;
+            funcionario.Telefones = entity.Telefones ?? funcionario.Telefones;
+            funcionario.LiderId = entity.LiderId ?? funcionario.LiderId;
 
-
-            _repositoryFunc.Updade(entity);
+            _repositoryFunc.Updade(funcionario);
             return await _repositoryFunc.SaveChangesAsync();
         }
     }

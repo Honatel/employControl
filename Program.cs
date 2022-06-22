@@ -71,25 +71,11 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
-// app.MapPost("/token", async (User model) =>
-// {
-//     var user = await UserRepository.Get(model.UserName, model.Password);
-
-//     if (user == null)
-//         return Results.NotFound(new
-//         {
-//             message = "invalid username or password"
-//         });
-//     var token = TokenService.GenereteToken(user);
-//     user.Password = "";
-
-//     return Results.Ok(new
-//     {
-//         user = user,
-//         token = token
-//     });
-// });
-
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+    dbContext.Database.EnsureCreated();
+}
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -1,0 +1,217 @@
+{
+	"id": "6ee28e41-2f59-7949-0026-70d7b1044e35",
+	"name": "EmploysControl",
+	"description": "",
+	"order": [
+		"44e131b0-ab57-cdd3-a6bb-1090c3f75d42",
+		"610cc281-3daa-a79d-b326-5b0912c7a543",
+		"1fa996cb-b6e0-c864-9964-4ecb62e9079e",
+		"ad9d912f-2d72-8f7f-1d22-8ccdad4073f0",
+		"b4ef3e84-c977-5763-5909-05dae67565f4",
+		"40252ecb-26a9-84a0-6b31-ff48772a8a60"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1655933668583,
+	"owner": "587915",
+	"public": false,
+	"requests": [
+		{
+			"id": "1fa996cb-b6e0-c864-9964-4ecb62e9079e",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{URL}}/v1/Funcionario",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1655938771266,
+			"name": "Create",
+			"description": "Requisição para realizar a busca do token",
+			"collectionId": "6ee28e41-2f59-7949-0026-70d7b1044e35",
+			"responses": [],
+			"rawModeData": "{\n  \"id\": 0,\n  \"nome\": \"string\",\n  \"sobrenome\": \"string\",\n  \"email\": \"user@example.com\",\n  \"numeroChapa\": 0,\n  \"liderId\": 0,\n  \"senha\": \"string\",\n  \"telefones\": \"string\",\n  \"ddd\": \"string\",\n  \"lider\": true\n}"
+		},
+		{
+			"id": "40252ecb-26a9-84a0-6b31-ff48772a8a60",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6Im1hbmFnZXIiLCJuYmYiOjE2NTU5Mzg0MzUsImV4cCI6MTY1NTk2NzIzNSwiaWF0IjoxNjU1OTM4NDM1fQ.MVDEP1ePbGaBEkAKVgeDh4lWpCXw8efx6qQVsFwsLzE\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6Im1hbmFnZXIiLCJuYmYiOjE2NTU5Mzg0MzUsImV4cCI6MTY1NTk2NzIzNSwiaWF0IjoxNjU1OTM4NDM1fQ.MVDEP1ePbGaBEkAKVgeDh4lWpCXw8efx6qQVsFwsLzE",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{URL}}/v1/Funcionario/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1655939005679,
+			"name": "findById copy",
+			"description": "Requisição para realizar a busca do token",
+			"collectionId": "6ee28e41-2f59-7949-0026-70d7b1044e35",
+			"responses": []
+		},
+		{
+			"id": "44e131b0-ab57-cdd3-a6bb-1090c3f75d42",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{URL}}/token",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1655934278558,
+			"name": "GetToken",
+			"description": "Requisição para realizar a busca do token",
+			"collectionId": "6ee28e41-2f59-7949-0026-70d7b1044e35",
+			"responses": [],
+			"rawModeData": "{\n  \"userName\": \"string\",\n  \"password\": \"string\"\n}"
+		},
+		{
+			"id": "610cc281-3daa-a79d-b326-5b0912c7a543",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{URL}}/v1/Funcionario",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1655934549157,
+			"name": "FindAll",
+			"description": "Requisição para realizar a busca do token",
+			"collectionId": "6ee28e41-2f59-7949-0026-70d7b1044e35",
+			"responses": [],
+			"rawModeData": "{\n  \"userName\": \"string\",\n  \"password\": \"string\"\n}"
+		},
+		{
+			"id": "ad9d912f-2d72-8f7f-1d22-8ccdad4073f0",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6Im1hbmFnZXIiLCJuYmYiOjE2NTU5Mzg0MzUsImV4cCI6MTY1NTk2NzIzNSwiaWF0IjoxNjU1OTM4NDM1fQ.MVDEP1ePbGaBEkAKVgeDh4lWpCXw8efx6qQVsFwsLzE\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6Im1hbmFnZXIiLCJuYmYiOjE2NTU5Mzg0MzUsImV4cCI6MTY1NTk2NzIzNSwiaWF0IjoxNjU1OTM4NDM1fQ.MVDEP1ePbGaBEkAKVgeDh4lWpCXw8efx6qQVsFwsLzE",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{URL}}/v1/Funcionario/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1655938913553,
+			"name": "Update",
+			"description": "Requisição para realizar a busca do token",
+			"collectionId": "6ee28e41-2f59-7949-0026-70d7b1044e35",
+			"responses": [],
+			"rawModeData": "{\n  \"nome\": \"string\",\n  \"sobrenome\": \"string\",\n  \"email\": \"user@example.com\",\n  \"senha\": \"string\",\n  \"telefones\": \"string\",\n  \"ddd\": \"string\",\n  \"lider\": true\n}"
+		},
+		{
+			"id": "b4ef3e84-c977-5763-5909-05dae67565f4",
+			"headers": "Content-Type: application/json\nAuthorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6Im1hbmFnZXIiLCJuYmYiOjE2NTU5Mzg0MzUsImV4cCI6MTY1NTk2NzIzNSwiaWF0IjoxNjU1OTM4NDM1fQ.MVDEP1ePbGaBEkAKVgeDh4lWpCXw8efx6qQVsFwsLzE\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Authorization",
+					"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFkbWluIiwicm9sZSI6Im1hbmFnZXIiLCJuYmYiOjE2NTU5Mzg0MzUsImV4cCI6MTY1NTk2NzIzNSwiaWF0IjoxNjU1OTM4NDM1fQ.MVDEP1ePbGaBEkAKVgeDh4lWpCXw8efx6qQVsFwsLzE",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{URL}}/v1/Funcionario/1",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1655938960063,
+			"name": "findById",
+			"description": "Requisição para realizar a busca do token",
+			"collectionId": "6ee28e41-2f59-7949-0026-70d7b1044e35",
+			"responses": [],
+			"rawModeData": "{\n  \"nome\": \"string\",\n  \"sobrenome\": \"string\",\n  \"email\": \"user@example.com\",\n  \"senha\": \"string\",\n  \"telefones\": \"string\",\n  \"ddd\": \"string\",\n  \"lider\": true\n}"
+		}
+	]
+}

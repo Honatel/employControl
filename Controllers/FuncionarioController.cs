@@ -60,7 +60,7 @@ namespace employesControl_V2.Controllers
                    : BadRequest("Erro ao criar Funcionario");
         }
 
-        [HttpPost("{id}")]
+        [HttpPost("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             return await _funcionarioService.Delete(id)

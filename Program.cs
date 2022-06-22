@@ -6,6 +6,7 @@ using employesControl_V2.Repository;
 using employesControl_V2.Repository.interfaces;
 using employesControl_V2.Repository.Interfaces;
 using employesControl_V2.Services;
+using employesControl_V2.Services.interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -64,36 +65,35 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 
 builder.Services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
-builder.Services.AddScoped<ILiderRepository, LiderRepository>();
-
+builder.Services.AddScoped<IFuncionarioService, FuncionarioService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 var app = builder.Build();
 
-app.MapPost("/login", (User model) =>
-{
-    var user = UserRepository.Get(model.UserName, model.Password);
+// app.MapPost("/token", async (User model) =>
+// {
+//     var user = await UserRepository.Get(model.UserName, model.Password);
 
-    if (user == null)
-        return Results.NotFound(new
-        {
-            message = "invalid username or password"
-        });
-    var token = TokenService.GenereteToken(user);
-    user.Password = "";
+//     if (user == null)
+//         return Results.NotFound(new
+//         {
+//             message = "invalid username or password"
+//         });
+//     var token = TokenService.GenereteToken(user);
+//     user.Password = "";
 
-    return Results.Ok(new
-    {
-        user = user,
-        token = token
-    });
-});
+//     return Results.Ok(new
+//     {
+//         user = user,
+//         token = token
+//     });
+// });
 
 
 app.UseAuthentication();
 app.UseAuthorization();
-// app.MapGet("/", () => "").RequireAuthorization
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

@@ -4,13 +4,13 @@ namespace employesControl_V2.Repository.interfaces
 {
     public interface IFuncionarioRepository
     {
-        public Task<IEnumerable<Funcionario>> Get();
+        public Task<IEnumerable<Funcionario>> FindAll();
 
-        public Task<Funcionario> GetById(int id);
+        public Task<Funcionario> FindById(int id);
 
-        public void Post(Funcionario entity);
+        public void Create(Funcionario entity);
 
-        public void Put(Funcionario entity);
+        public void Updade(Funcionario entity);
 
         public void Delete(Funcionario entity);
 

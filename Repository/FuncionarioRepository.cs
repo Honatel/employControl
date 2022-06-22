@@ -13,20 +13,20 @@ namespace employesControl_V2.Repository
         {
             _context = context;
         }
-        public async Task<IEnumerable<Funcionario>> Get()
+        public async Task<IEnumerable<Funcionario>> FindAll()
         {
             return await _context.Funcionarios.ToListAsync();
         }
-        public async Task<Funcionario> GetById(int id)
+        public async Task<Funcionario> FindById(int id)
         {
             return await _context.Funcionarios.
-                Where(x => x.id == id).FirstOrDefaultAsync();
+                Where(x => x.Id == id).FirstOrDefaultAsync();
         }
-        public void Put(Funcionario entity)
+        public void Updade(Funcionario entity)
         {
             _context.Update(entity);
         }
-        public void Post(Funcionario entity)
+        public void Create(Funcionario entity)
         {
             _context.Add(entity);
         }

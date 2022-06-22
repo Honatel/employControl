@@ -12,7 +12,7 @@ using employesControl_V2.Data;
 namespace employesControl_V2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220622032619_InitialData")]
+    [Migration("20220622160253_InitialData")]
     partial class InitialData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -26,21 +26,20 @@ namespace employesControl_V2.Migrations
 
             modelBuilder.Entity("employesControl_V2.Models.Funcionario", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("DDD")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("IsLider")
+                    b.Property<bool>("Lider")
                         .HasColumnType("boolean");
 
                     b.Property<int?>("LiderId")
@@ -54,7 +53,7 @@ namespace employesControl_V2.Migrations
                     b.Property<decimal>("NumeroChapa")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("Password")
+                    b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -63,10 +62,10 @@ namespace employesControl_V2.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
-                    b.Property<string[]>("Telefones")
-                        .HasColumnType("text[]");
+                    b.Property<string>("Telefones")
+                        .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex(new[] { "NumeroChapa" }, "Unique_Index")
                         .IsUnique();
@@ -74,23 +73,29 @@ namespace employesControl_V2.Migrations
                     b.ToTable("Funcionarios");
                 });
 
-            modelBuilder.Entity("employesControl_V2.Models.Lider", b =>
+            modelBuilder.Entity("employesControl_V2.Models.User", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<bool?>("Ativo")
-                        .HasColumnType("boolean");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.Property<int?>("IdFuncionario")
-                        .HasColumnType("integer");
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.HasKey("id");
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("text");
 
-                    b.ToTable("Lideres");
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

@@ -8,7 +8,7 @@ namespace employesControl_V2.Services
 {
     public static class TokenService
     {
-        public static string GenereteToken(User user)
+        public static string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(Settings.Secret);

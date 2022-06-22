@@ -7,7 +7,7 @@ namespace employesControl_V2.Models
     public class Funcionario
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "O campo Nome é obrigatório")]
         [MaxLength(15, ErrorMessage = "Este campo deve conter entre 3 e 15 caracteres")]
@@ -25,9 +25,9 @@ namespace employesControl_V2.Models
         public int? LiderId { get; set; }
 
         [Required(ErrorMessage = "O campo Password é obrigatório")]
-        public string Password { get; set; }
-        public string[]? Telefones { get; set; }
-        public string DDD { get; set; }
-        public bool IsLider { get; set; }
+        public string Senha { get; set; }
+        public string? Telefones { get; set; }
+        public string? DDD { get; set; }
+        public bool Lider { get; set; }
     }
 }

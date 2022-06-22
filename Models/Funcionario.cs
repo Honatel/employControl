@@ -1,7 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace employesControl_V2.Models
 {
+    [Index("NumeroChapa", IsUnique = true, Name = "Unique_Index")]
     public class Funcionario
     {
         [Key]
@@ -19,13 +21,13 @@ namespace employesControl_V2.Models
 
         [EmailAddress(ErrorMessage = "E-mail em formato invalido")]
         public string Email { get; set; }
-        public int NumeroChapa { get; set; }
-        public int? IdLider { get; set; }
+        public decimal NumeroChapa { get; set; }
+        public int? LiderId { get; set; }
 
         [Required(ErrorMessage = "O campo Password é obrigatório")]
         public string Password { get; set; }
         public string[]? Telefones { get; set; }
         public string DDD { get; set; }
-        public bool isLider { get; set; }
+        public bool IsLider { get; set; }
     }
 }

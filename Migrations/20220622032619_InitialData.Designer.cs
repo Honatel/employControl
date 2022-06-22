@@ -12,8 +12,8 @@ using employesControl_V2.Data;
 namespace employesControl_V2.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220621025650_ItialCreate")]
-    partial class ItialCreate
+    [Migration("20220622032619_InitialData")]
+    partial class InitialData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -40,7 +40,10 @@ namespace employesControl_V2.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("IdLider")
+                    b.Property<bool>("IsLider")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("LiderId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Nome")
@@ -48,8 +51,8 @@ namespace employesControl_V2.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("character varying(15)");
 
-                    b.Property<int>("NumeroChapa")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("NumeroChapa")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -65,6 +68,9 @@ namespace employesControl_V2.Migrations
 
                     b.HasKey("id");
 
+                    b.HasIndex(new[] { "NumeroChapa" }, "Unique_Index")
+                        .IsUnique();
+
                     b.ToTable("Funcionarios");
                 });
 
@@ -76,10 +82,10 @@ namespace employesControl_V2.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<bool>("Ativo")
+                    b.Property<bool?>("Ativo")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("IdFuncionario")
+                    b.Property<int?>("IdFuncionario")
                         .HasColumnType("integer");
 
                     b.HasKey("id");

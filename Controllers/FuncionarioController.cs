@@ -12,7 +12,6 @@ namespace employesControl_V2.Controllers
         private readonly IFuncionarioRepository _repositoryFunc;
         private readonly ILiderRepository _repositoryLid;
 
-
         public FuncionarioController(IFuncionarioRepository epositoryFunc, ILiderRepository repositoryLid)
         {
             _repositoryFunc = epositoryFunc;
@@ -54,8 +53,7 @@ namespace employesControl_V2.Controllers
             entity.Nome = funcionario.Nome ?? entity.Nome;
             entity.Sobrenome = funcionario.Sobrenome ?? entity.Sobrenome;
             entity.Telefones = funcionario.Telefones ?? entity.Telefones;
-            entity.IdLider = funcionario.IdLider ?? entity.IdLider;
-            entity.NumeroChapa = funcionario.NumeroChapa == 0 ? entity.NumeroChapa : funcionario.NumeroChapa;
+            entity.LiderId = funcionario.LiderId ?? entity.LiderId;
 
             _repositoryFunc.Put(entity);
 
@@ -67,19 +65,31 @@ namespace employesControl_V2.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(Funcionario funcionario)
         {
+            funcionario.Password = Helper.DataProtection.EncriptiStringValue(funcionario.Password);
+
+            var resultFuncionarios = await _repositoryFunc.Get();
+            var maxId = resultFuncionarios.Count() > 0
+                        ? resultFuncionarios?.OrderByDescending(x => x.id)?.First().id
+                        : 0;
+            maxId++;
+            funcionario.NumeroChapa = Convert.ToDecimal(maxId?.ToString("D10"));
+
             _repositoryFunc.Post(funcionario);
             var result = await _repositoryFunc.SaveChangesAsync();
 
             if (result)
             {
-                if (funcionario.isLider)
+                if (funcionario.IsLider)
+                {
                     _repositoryLid.Post(new Lider() { IdFuncionario = funcionario.id, Ativo = true });
+                    return await _repositoryLid.SaveChangesAsync()
+                    ? Ok("Funcionario salvo com sucesso")
+                    : BadRequest("Erro ao salvar Funcionario");
+                }
             }
             else return BadRequest("Erro ao criar Funcionario");
 
-            return await _repositoryLid.SaveChangesAsync()
-                    ? Ok("Funcionario salvo com sucesso")
-                    : BadRequest("Erro ao salvar Funcionario");
+            return Ok("Funcionario salvo com sucesso");
         }
 
         [HttpDelete("{id}")]
@@ -90,7 +100,7 @@ namespace employesControl_V2.Controllers
 
             _repositoryFunc.Delete(entity);
 
-            if (entity.isLider)
+            if (entity.IsLider)
             {
                 var lider = await _repositoryLid.GetById(id);
                 _repositoryLid.Delete(lider);

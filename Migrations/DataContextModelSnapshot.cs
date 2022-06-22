@@ -38,7 +38,10 @@ namespace employesControl_V2.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("IdLider")
+                    b.Property<bool>("IsLider")
+                        .HasColumnType("boolean");
+
+                    b.Property<int?>("LiderId")
                         .HasColumnType("integer");
 
                     b.Property<string>("Nome")
@@ -46,8 +49,8 @@ namespace employesControl_V2.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("character varying(15)");
 
-                    b.Property<int>("NumeroChapa")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("NumeroChapa")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("Password")
                         .IsRequired()
@@ -61,10 +64,10 @@ namespace employesControl_V2.Migrations
                     b.Property<string[]>("Telefones")
                         .HasColumnType("text[]");
 
-                    b.Property<bool>("isLider")
-                        .HasColumnType("boolean");
-
                     b.HasKey("id");
+
+                    b.HasIndex(new[] { "NumeroChapa" }, "Unique_Index")
+                        .IsUnique();
 
                     b.ToTable("Funcionarios");
                 });
@@ -77,10 +80,10 @@ namespace employesControl_V2.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("id"));
 
-                    b.Property<bool>("Ativo")
+                    b.Property<bool?>("Ativo")
                         .HasColumnType("boolean");
 
-                    b.Property<int>("IdFuncionario")
+                    b.Property<int?>("IdFuncionario")
                         .HasColumnType("integer");
 
                     b.HasKey("id");
